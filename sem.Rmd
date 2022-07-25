@@ -1,0 +1,213 @@
+---
+title: "sem"
+author: "harshini"
+date: '2022-06-27'
+output: html_document
+---
+
+```{r}
+covid19 <- read.csv(file.choose(), header = T)
+```
+
+View the Dimesnion of the Data Set
+
+```{r}
+dim(covid19)
+```
+
+view the first 6 values of the dataset using the head function
+
+```{r}
+head(covid19)
+```
+
+
+view the last 6 values of the dataset using the tail function
+
+```{r}
+tail(covid19)
+```
+
+view the structure of the dataset 
+
+```{r}
+str(covid19)
+```
+
+
+
+summary statistics for key variables.
+
+
+The Mean value of The icu Columns is 0.2675325.
+
+```{r}
+mean(covid19$ICU)
+```
+The Median value of The icu Columns is 0
+
+```{r}
+median(covid19$ICU)
+```
+The variance of The icu Columns is 0.1960607 
+
+```{r}
+var(covid19$ICU)
+```
+The sd of The icu Columns is 0.4427874
+
+```{r}
+sd(covid19$ICU)
+```
+The range values of The icu Columns is 0 to 1.
+
+```{r}
+range(covid19$ICU)
+```
+The Minimum value of The icu Columns is 0.
+
+```{r}
+min(covid19$ICU)
+```
+The Maximum value of The icu Columns is 1
+
+```{r}
+max(covid19$ICU)
+```
+
+
+view the other column of the dataset using table function
+
+table function is mainly used for count the values in the certain variable.
+
+```{r}
+table(covid19$AGE_PERCENTIL)
+```
+
+
+```{r}
+table(covid19$GENDER)
+```
+
+
+```{r}
+table(covid19$AGE_ABOVE65)
+```
+
+
+```{r}
+table(covid19$DIMER_MAX)
+```
+Histogram Chart for some numerical or continous variables.
+
+```{r}
+hist(covid19$PATIENT_VISIT_IDENTIFIER,col='blue',main='PATIENT_VISIT_IDENTIFIER',xlab = 'visit identifier')
+```
+
+
+```{r}
+hist(covid19$DIMER_MEAN,col='blue',main='Dimer_Mean',xlab = 'Dimer_Mean')
+```
+
+
+```{r}
+hist(covid19$TEMPERATURE_DIFF,col='blue',main='Temperature_diff',xlab = 'Temperature_diff')
+```
+
+
+```{r}
+hist(covid19$TEMPERATURE_DIFF_REL,col='blue',main='Temperature_diff_rel',xlab = 'Temperature_diff_rel')
+```
+
+
+```{r}
+hist(covid19$OXYGEN_SATURATION_DIFF_REL,col='blue',main='oxygen_saturation_diff_rel',xlab = 'oxygen_saturation_diff_rel')
+```
+
+
+```{r}
+hist(covid19$BLOODPRESSURE_DIASTOLIC_MAX,col='blue',main='Bloodpressure_diastolic_max',xlab = 'Bloodpressure_diastolic_max')
+```
+Boxplot for continous variables.
+
+```{r}
+boxplot(covid19$OXYGEN_SATURATION_DIFF_REL,col = 'blue',main='OXYGEN_SATURATION_DIFF_REL')
+```
+
+```{r}
+boxplot(covid19$TEMPERATURE_DIFF_REL,col = 'blue',main='TEMPERATURE_DIFF_RELL')
+```
+
+
+```{r}
+boxplot(covid19$HEART_RATE_DIFF_REL,col = 'blue',main='HEART_RATE_DIFF_REL')
+```
+
+Boxplot for 2 variables 
+
+```{r}
+boxplot(covid19$OXYGEN_SATURATION_DIFF_REL~covid19$ICU,col= 'blue',main='icu patien oxygen level',xlab = 'icu',ylab = 'oxygen level')
+```
+Barplot for icu vs albumin_diff
+
+```{r}
+barplot(table(covid19$ICU),table(covid19$ALBUMIN_DIFF),col='blue')
+```
+barplot for icu vs gender.
+
+I understood for this chart is many of the male is admitted in icu ward.
+
+```{r}
+barplot(table(covid19$GENDER),table(covid19$ICU),col = 'blue')
+```
+
+
+```{r}
+plot(covid19$ICU~covid19$OXYGEN_SATURATION_DIFF_REL,col='blue',xlab='oxygen_saturation',ylab = 'icu')
+```
+
+
+```{r}
+plot(covid19$PATIENT_VISIT_IDENTIFIER~covid19$GENDER,col='blue',xlab='gender',ylab='visiter')
+```
+```{r}
+plot(covid19$GENDER,covid19$ICU,col='blue')
+```
+
+
+```{r}
+plot(covid19$AGE_ABOVE65,covid19$BLOODPRESSURE_DIASTOLIC_DIFF_REL,col='blue',xlab='bloodpressure',ylab = 'Age')
+
+```
+
+```{r}
+plot(covid19$ICU~covid19$AGE_ABOVE65,col='blue',xlab='gender',ylab='icu')
+```
+
+Here I Found correlation for some features
+
+```{r}
+cor(covid19$PATIENT_VISIT_IDENTIFIER,covid19$ICU)
+```
+
+
+```{r}
+cor(covid19$GENDER,covid19$ICU)
+```
+
+
+```{r}
+cor(covid19$AGE_ABOVE65,covid19$PATIENT_VISIT_IDENTIFIER)
+```
+
+
+```{r}
+cor(covid19$AGE_ABOVE65,covid19$ICU)
+```
+
+I have a dataset about covid-19 clinical data to access diagnosis. Here i saw relationship between 2 variables and i found correlation for some features. And they correlated normally not highly correlated. so the relationship is one to another variables is very low.  Here my understand is one variable is not affected to another variables. And my another understand is the icu ward patient is mostly male and their age is Aove 65.
+
+
+
+
+
